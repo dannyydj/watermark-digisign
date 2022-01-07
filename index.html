@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Watermark Your Digital Signature using Canvas & Javascript</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name"description" content="Watermark Your Digital Signature using Canvas & Javascript">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="assets/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="assets/hashids.min.js"></script>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="assets/digisign.js"></script>
+    <style>
+        .dropzone-wrapper {
+            border: 2px dashed #91b0b3;
+            color: #92b0b3;
+            position: relative;
+            height: 150px;
+        }
+
+        .dropzone-desc {
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            width: 40%;
+            top: 50px;
+            font-size: 16px;
+        }
+
+        .dropzone,
+        .dropzone:focus {
+            position: absolute;
+            outline: none !important;
+            width: 100%;
+            height: 150px;
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        .dropzone-wrapper:hover,
+        .dropzone-wrapper.dragover {
+            background: #ecf0f5;
+        }
+    </style>
+</head>
+
+<body style="background-color: snow;">
+    <div class="col-lg-8 mx-auto p-3 py-md-5">
+        <header class="d-flex align-items-center pb-2 mb-3">
+            <div class="container-fluid text-center">
+                <h4>Watermark your digital signature using canvas and javascript</h4>
+            </div>
+        </header>
+        <main class="align-items-center border-top">
+            <div class="row" id="row-upload">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h4>Step #1) Upload your image here</h4>
+                        <div class="dropzone-wrapper">
+                            <div class="dropzone-desc">
+                                <i class="bi bi-upload"></i>
+                                <p>Choose an image file or drag it here.</p>
+                            </div>
+                            <input type="file" name="img_logo" class="dropzone" id="img-upload">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="row-keywords">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h4>Step #2) Set Keywords</h4>
+                        <div class="input-group mb-3">
+                            <input type="text" id="keywords" class="form-control" placeholder="Set Keywords">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-dark" type="button" onclick="hashKeywords()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row" id="row-preview">
+                <div class="col-md-12">
+                    <h4>Step #3) Preview & Download</h4>
+                    <canvas id="myCanvas" width="600px">Your browser doesn't support canvas</canvas>
+                    <br>
+                    <button class="btn btn-outline-success" type="button" onclick="download()"><i class="bi bi-download"></i>&nbsp;Download</button>
+                    <button class="btn btn-outline-danger" type="button" onclick="reset()"><i class="bi bi-trash"></i>&nbsp;Reset</button>
+                </div>
+            </div>
+        </main>
+        <footer class="pt-5 my-2 text-muted border-top">
+            <div class="container text-center">
+                Built using
+                <a href="https://getbootstrap.com/?utm_source=digisign.dannyydj.my.id" target="_blank" class="text-decoration-none"><i class="bi bi-bootstrap"></i> Bootstrap</a>,
+                <a href="https://hashids.org/?utm_source=digisign.dannyydj.my.id" target="_blank" class="text-decoration-none"><i class="bi bi-code-slash"></i> hashids</a> 
+                and
+                <i class="bi bi-code-square"></i> Vanilla Javascript 
+                <br>
+                Hosted on <a href="https://github.com/?utm_source=digisign.dannyydj.my.id" target="_blank"
+                    class="text-decoration-none"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
